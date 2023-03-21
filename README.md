@@ -1,12 +1,16 @@
 path-templater
 ===
 
+[![CI](https://github.com/jaywcjlove/path-templater/actions/workflows/main.yml/badge.svg)](https://github.com/jaywcjlove/path-templater/actions/workflows/main.yml)
+[![NPM Downloads](https://img.shields.io/npm/dm/path-templater.svg?style=flat)](https://www.npmjs.com/package/path-templater)
+[![NPM version](https://img.shields.io/npm/v/path-templater.svg?style=flat&label=path-templater)](https://npmjs.org/package/path-templater)
+
 This is a simple path template replacement tool for nodejs.
 
 ## Installation
 
 ```shell
-$ npm install typenexus
+$ npm install path-templater
 ```
 
 ## Quick start
