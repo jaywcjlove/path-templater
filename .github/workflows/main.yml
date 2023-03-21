@@ -34,3 +34,52 @@ jobs:
           user_email: 'github-actions[bot]@users.noreply.github.com'
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+
+
+      - name: Is a tag created auto?
+        id: create_tag
+        uses: jaywcjlove/create-tag-action@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          package-path: package.json
+
+      - name: Generate Changelog
+        id: changelog
+        uses: jaywcjlove/changelog-generator@main
+        if: steps.create_tag.outputs.successful
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          head-ref: ${{ steps.create_tag.outputs.version }}
+          filter-author: (小弟调调™|Renovate Bot|renovate-bot)
+          filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
+
+      - name: package.json info
+        uses: jaywcjlove/github-action-package@main
+        with:
+          path: package.json
+          unset: scripts,devDependencies
+
+      - run: npm publish --access public
+        continue-on-error: true
+        working-directory: core
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        if: steps.create_tag.outputs.successful
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ steps.create_tag.outputs.version }}
+          tag: ${{ steps.create_tag.outputs.version }}
+          body: |
+            [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/path-templater@${{steps.create_tag.outputs.versionNumber}}/file/README.md)
+            
+            Documentation ${{ steps.changelog.outputs.tag }}: https://raw.githack.com/jaywcjlove/path-templater/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
+
+            ```bash
+            npm i path-templater@${{steps.create_tag.outputs.versionNumber}}
+            ```
+            ${{ steps.changelog.outputs.compareurl }}
+            
+            ${{ steps.changelog.outputs.changelog }}
