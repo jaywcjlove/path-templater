@@ -25,7 +25,11 @@ pathTemplater('http://localhost/:name/:name', { name: 'wcj' }) // => http://loca
 pathTemplater('http://github.com/:owner/:repo', { owner: 'jaywcjlove', repo: 'path-templater' })
 // => http://github.com/jaywcjlove/path-templater
 
-pathTemplater(':apiBaseUrl/:owner/:repo', { owner: 'jaywcjlove', repo: 'path-templater', apiBaseUrl: 'http://github.com' })
+pathTemplater(':apiBaseUrl/:owner/:repo', {
+  owner: 'jaywcjlove',
+  repo: 'path-templater',
+  apiBaseUrl: 'http://github.com'
+})
 // => http://github.com/jaywcjlove/path-templater
 
 pathTemplater('http://localhost:3001/:name/:name', { name: 'wcj' })
@@ -35,7 +39,7 @@ pathTemplater('http://localhost:3001/:name/:name?id=:user', { name: 'wcj', user:
 // => http://localhost:3001/wcj/wcj?id=jaywcjlove
 
 pathTemplater(':apiBaseUrl/:owner/:repo', { owner: 'jaywcjlove', repo: 'path-templater' })
-// => Could not find url parameter apiBaseUrl in passed options object;
+// 🚨 => Could not find url parameter apiBaseUrl in passed options object;
 ```
 
 ## Contributors
