@@ -1,0 +1,34 @@
+{
+  "name": "path-templater",
+  "version": "0.0.1",
+  "description": "This is a simple path template replacement tool for nodejs.",
+  "author": "kenny wong <wowohoo@qq.com>",
+  "license": "MIT",
+  "type": "module",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "homepage": "https://jaywcjlove.github.io/path-templater",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/path-templater.git"
+  },
+  "keywords": [
+    "path",
+    "templater",
+    "nodejs",
+    "TypeScript"
+  ],
+  "files": [
+    "lib",
+    "src"
+  ],
+  "devDependencies": {
+    "tsbb": "^3.7.9"
+  },
+  "scripts": {
+    "watch": "tsbb watch --disable-babel",
+    "build": "tsbb build --disable-babel",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage --bail"
+  }
+}
