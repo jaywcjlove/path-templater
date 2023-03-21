@@ -38,6 +38,16 @@ pathTemplater(':apiBaseUrl/:owner/:repo', { owner: 'jaywcjlove', repo: 'path-tem
 // => Could not find url parameter apiBaseUrl in passed options object;
 ```
 
+## Contributors
+
+As always, thanks to our amazing contributors!
+
+<a href="https://github.com/jaywcjlove/path-templater/graphs/contributors">
+  <img src="https://jaywcjlove.github.io/path-templater/CONTRIBUTORS.svg" />
+</a>
+
+Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
+
 ## License
 
 This package is licensed under the MIT License.
