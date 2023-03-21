@@ -1,5 +1,7 @@
+<!--idoc:ignore:start-->
 path-templater
 ===
+<!--idoc:ignore:end-->
 
 [![CI](https://github.com/jaywcjlove/path-templater/actions/workflows/main.yml/badge.svg)](https://github.com/jaywcjlove/path-templater/actions/workflows/main.yml)
 [![NPM Downloads](https://img.shields.io/npm/dm/path-templater.svg?style=flat)](https://www.npmjs.com/package/path-templater)
