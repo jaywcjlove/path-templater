@@ -19,6 +19,15 @@ jobs:
       - run: idoc -s "path-templater {{version}}"
       - run: npm run coverage
       - run: tree -I 'node_modules|.git|.github|src' -L 3 -a
+      
+      - name: Create Coverage Badges
+        uses: jaywcjlove/coverage-badges-cli@main
+        with:
+          style: flat
+          source: coverage/coverage-summary.json
+          output: coverage/badges.svg
+      
+      - run: cp -rp coverage/lcov-report dist
 
       - name: Generate Contributors Images
         uses: jaywcjlove/github-action-contributors@main
