@@ -16,7 +16,7 @@ jobs:
       - run: npm run build
 
       - run: npm install idoc@1.25.0 -g
-      - run: idoc -s "path-templater {{version}}"
+      - run: idoc -s "Path Templater {{version}}"
       - run: npm run coverage
       - run: tree -I 'node_modules|.git|.github|src' -L 3 -a
       
