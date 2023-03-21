@@ -13,7 +13,7 @@ This is a simple path template replacement tool for nodejs.
 $ npm install path-templater
 ```
 
-## Quick start
+## Usage
 
 ```typescript
 import pathTemplater from 'path-templater';
