@@ -23,7 +23,7 @@
     "src"
   ],
   "devDependencies": {
-    "tsbb": "^3.7.9"
+    "tsbb": "^4.0.0"
   },
   "scripts": {
     "watch": "tsbb watch --disable-babel",
