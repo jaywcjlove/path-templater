@@ -3,6 +3,7 @@ path-templater
 ===
 <!--idoc:ignore:end-->
 
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor)
 [![CI](https://github.com/jaywcjlove/path-templater/actions/workflows/main.yml/badge.svg)](https://github.com/jaywcjlove/path-templater/actions/workflows/main.yml)
 [![NPM Downloads](https://img.shields.io/npm/dm/path-templater.svg?style=flat)](https://www.npmjs.com/package/path-templater)
 [![NPM version](https://img.shields.io/npm/v/path-templater.svg?style=flat&label=path-templater)](https://npmjs.org/package/path-templater)

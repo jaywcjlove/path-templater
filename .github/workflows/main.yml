@@ -5,17 +5,29 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           registry-url: 'https://registry.npmjs.org'
 
       - run: npm install
       - run: npm run build
 
-      - run: npm install idoc@1.25.0 -g
+      - name: Create idoc config.
+        run: |
+          cat > idoc.yml << EOF
+          site: "Path Templater {{version}}"
+          menus:
+            Home: index.html
+            Sponsor: https://jaywcjlove.github.io/#/sponsor
+          EOF
+
+      - run: npm install idoc@1.27.2 -g
       - run: idoc -s "Path Templater {{version}}"
       - run: npm run coverage
       - run: tree -I 'node_modules|.git|.github|src' -L 3 -a
@@ -67,7 +79,7 @@ jobs:
           path: package.json
           unset: scripts,devDependencies
 
-      - run: npm publish --access public
+      - run: npm publish --access public --provenance
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -80,7 +92,7 @@ jobs:
           name: ${{ steps.create_tag.outputs.version }}
           tag: ${{ steps.create_tag.outputs.version }}
           body: |
-            [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/path-templater@${{steps.create_tag.outputs.versionNumber}}/file/README.md)
+            [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor) [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/path-templater@${{steps.create_tag.outputs.versionNumber}}/file/README.md)
             
             Documentation ${{ steps.changelog.outputs.tag }}: https://raw.githack.com/jaywcjlove/path-templater/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
 
