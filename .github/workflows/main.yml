@@ -9,10 +9,10 @@ jobs:
       contents: write
       id-token: write
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           registry-url: 'https://registry.npmjs.org'
 
       - run: npm install
@@ -27,7 +27,7 @@ jobs:
             Sponsor: https://jaywcjlove.github.io/#/sponsor
           EOF
 
-      - run: npm install idoc@1.27.2 -g
+      - run: npm install idoc@1 -g
       - run: idoc -s "Path Templater {{version}}"
       - run: npm run coverage
       - run: tree -I 'node_modules|.git|.github|src' -L 3 -a
@@ -48,7 +48,7 @@ jobs:
           avatarSize: 42
 
       - name: Deploy Website
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
@@ -88,6 +88,7 @@ jobs:
         uses: ncipollo/release-action@v1
         if: steps.create_tag.outputs.successful
         with:
+          allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ steps.create_tag.outputs.version }}
           tag: ${{ steps.create_tag.outputs.version }}
